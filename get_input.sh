@@ -9,8 +9,8 @@ read day
 # Construct the URL based on the year and day input
 url="https://adventofcode.com/$year/day/$day/input"
 
-# Minimal cookie string (just the session cookie)
-cookie_string="53616c7465645f5f99050a86adc77b633ff112324662b42087cc371b927c23bc04332400dc56e96fbdec5e37489ae9b5904393ec38df4c1c3e451b09184d060e"
+#Reading cookie from Lynx.trace
+cookie_string=$(grep -i 'session' Lynx.trace | sed -e 's/^Cookie: //' -e 's/;.*$//' -e 's/^.*session=//' | tr -d '\\r' | tail -n 1)
 
 # Send the curl request with the session cookie and save it to a file
 curl -H "Cookie: session=$cookie_string" "$url" -o "${year}_${day}_input.txt"
