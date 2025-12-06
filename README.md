@@ -3,3 +3,6 @@
 from: [Advent of Code](https://adventofcode.com/2022/about)  
 #### I'll be focusing to complete this challenge using Go, Rust and Python. 
 ###### Yh I'm total noob and I'm just messin around lol
+
+### Instructions for the script
+#### Just copy session key from any browser, paste it to a txt file as `session=<paste-your-key-here>` and you are all set.
