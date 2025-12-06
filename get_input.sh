@@ -10,7 +10,13 @@ read day
 url="https://adventofcode.com/$year/day/$day/input"
 
 #Reading cookie from Lynx.trace
-cookie_string=$(grep -i 'session' Lynx.trace | sed -e 's/^Cookie: //' -e 's/;.*$//' -e 's/^.*session=//' | tr -d '\\r' | tail -n 1)
+cookie_string=$(grep -i 'session' session.txt | sed  -e 's/^.*session=//' | tr -d '\\r' | tail -n 1)
+
+#Checking if folder exists, if not make one
+if [ ! -d "${year}/day${day}" ]; then
+   mkdir -p "${year}/day${day}" 
+   echo "Dont exist"
+fi
 
 #Checking if folder exists, if not make one
 if [ ! -d "${year}/day${day}" ]; then
@@ -27,4 +33,3 @@ if [ $? -eq 0 ]; then
 else
   echo "Failed to download the input. Please check your session cookie and the URL."
 fi
-
